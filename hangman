@@ -1,0 +1,73 @@
+
+
+def check ():
+    again = 'y'
+    while again.lower() == 'y':
+        player1=input("please enter any word for  player one turn: ")
+        allowedguess=6
+        guesses=[]
+        check=False
+        while not check:
+            countone=0
+            for letter in player1:
+                if letter.lower() in guesses:
+                    print(letter, end='')
+                else :
+                    print("_",end=' ')
+            print("")
+            guess =input(f"your allowed gusess left are : {allowedguess},next guess: ")
+            guesses.append(guess.lower())
+            if guess.lower() not in player1.lower():
+                allowedguess-=1
+                if allowedguess==0:
+                    break
+            check=True
+            for letter in player1:
+                if letter.lower() not in guesses:
+                    check=False
+        if check==True:
+           
+            print(f"you found the word! it was {player1}!")
+            countone=countone+1
+        else:
+           print(f"game over ! the word was {player1}!")
+           countone=countone
+        player2=input("please enter any word for player two turn: ")
+        allowedguess=6
+        guesses=[]
+        check=False
+        while not check:
+            counttwo=0
+            for letter in player2:
+                if letter.lower() in guesses:
+                    print(letter, end='')
+                else :
+                    print("_",end=' ')
+            print("")
+            guess =input(f"your allowed gusess left are : {allowedguess},next guess: ")
+            guesses.append(guess.lower())
+            if guess.lower() not in player2.lower():
+                allowedguess-=1
+                if allowedguess==0:
+                    break
+            check=True
+            for letter in player2:
+                if letter.lower() not in guesses:
+                    check=False
+        if check:
+            print(f"you found the word! it was {player2}!")
+            counttwo+=1
+        else:
+            
+            print(f"game over ! the word was {player2}!")
+            counttwo=counttwo
+        if countone>counttwo:
+           print('Player one won the game')
+        elif counttwo>countone:
+            print("player 2 won the game")
+        else:
+            print("both players got same points")
+        again = input("Do you want to play.press Y for Yes N for No again[Y/n]?")
+        
+    
+show=check()
